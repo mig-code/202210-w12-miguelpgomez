@@ -42,6 +42,4 @@ export const charactersData = [
     tyrionLannister,
     bronn,
 ];
-export function getCharactersData() {
-    return charactersData;
-}
+export const getCharactersData =() => charactersData;

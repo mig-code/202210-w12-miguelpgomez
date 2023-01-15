@@ -1,7 +1,7 @@
-import { Fighter } from './fighter.js';
-import { Character } from './character.js';
-import { Squire } from './squire.js';
-import { King } from './king.js';
+import { Character } from "./character";
+import { Fighter } from "./fighter";
+import { King } from "./king";
+import { Squire } from "./squire";
 
 export class Advisor extends Character {
     constructor(

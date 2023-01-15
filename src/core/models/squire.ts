@@ -1,5 +1,5 @@
-import { Fighter } from './fighter.js';
-import { Character } from './character.js';
+import { Fighter } from './fighter';
+import { Character } from './character';
 export class Squire extends Character {
     constructor(
         char_name: string,
