@@ -1,7 +1,10 @@
 import { Advisor } from '../models/advisor';
+import { Character } from '../models/character';
 import { Fighter } from '../models/fighter';
 import { King } from '../models/king';
 import { Squire } from '../models/squire';
+
+export type Characters = Array<Character>;
 
 const joffreyBaratheon = new King(
     'Joffrey',
@@ -35,7 +38,7 @@ const tyrionLannister = new Advisor(
 );
 const bronn = new Squire('Bronn', '', 42, 'img/bronn.jpg', jaimeLannister, 10);
 
-export const charactersData = [
+export const charactersData: Characters = [
     joffreyBaratheon,
     jaimeLannister,
     daenerysTargaryen,
