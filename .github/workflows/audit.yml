@@ -2,72 +2,56 @@ name: Audit
 on: push
 
 jobs:
+    audit:
+        runs-on: ubuntu-latest
 
-  audit:
+        name: Audit
 
-    runs-on: ubuntu-latest
+        steps:
+            - name: Git checkout
 
-    name: Audit
+              uses: actions/checkout@v2
 
-				 
-    steps:
+            - name: Check if .editorconfig exists
 
-      - name: Git checkout
+              uses: andstor/file-existence-action@v1
 
-        uses: actions/checkout@v2
+              with:
+                  files: '.editorconfig'
 
-      - name: Check if .editorconfig exists
+                  allow_failure: true
 
-        uses: andstor/file-existence-action@v1
+            - name: EditorConfig validation
 
-        with:
+              uses: snow-actions/eclint@v1.0.1
 
-          files: '.editorconfig'
+            - name: Ensure node_modules is ignored by Git
 
-          allow_failure: true
+              uses: dkershner6/gitignore-parser@v1
 
-				  
+              with:
+                  must_deny: 'node_modules/'
 
-      - name: EditorConfig validation
+            - name: Install modules
 
-        uses: snow-actions/eclint@v1.0.1
+              run: npm ci
 
-				  
+            - name: ESLint validation
 
-      - name: Ensure node_modules is ignored by Git
+              run: npx eslint --ignore-path .gitignore .
 
-        uses: dkershner6/gitignore-parser@v1
+            - name: Check commit message length
 
-        with:
+              uses: gsactions/commit-message-checker@v1
 
-          must_deny: 'node_modules/'
+              with:
+                  pattern: '^[^#].{10,74}'
 
-				  
+                  error: 'The commit message length must be between 10 and 72'
 
-      - name: Install modules
+                  excludeDescription: 'true' # optional: this excludes the description body of a pull request
 
-        run: npm ci
+                  excludeTitle: 'true' # optional: this excludes the title of a pull request
 
-				  
+                  checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
 
-      - name: ESLint validation
-
-        run: npx eslint --ignore-path .gitignore .
-
-				  
-
-      - name: Check commit message length
-
-        uses: gsactions/commit-message-checker@v1
-
-        with:
-
-          pattern: '^[^#].{10,74}'
-
-          error: 'The commit message length must be between 10 and 72'
-
-          excludeDescription: 'true' # optional: this excludes the description body of a pull request
-
-          excludeTitle: 'true' # optional: this excludes the title of a pull request
-
-          checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
