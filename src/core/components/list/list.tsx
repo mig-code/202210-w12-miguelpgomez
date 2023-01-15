@@ -4,13 +4,15 @@ import { Characters, getCharactersData } from '../../data/characters.data';
 export default function List() {
     const initialCharacters = getCharactersData() as Characters;
     const [characters, setCharacters] = useState(initialCharacters);
+    console.log(characters);
+    console.log(characters[3].advises.char_name);
 
     return (
         <>
             <h1>Lista de personajes</h1>
             <ul className="characters-list row list-unstyled">
                 {characters.map((item, index) => (
-                    <li className="character col ">
+                    <li key={item.id} className="character col ">
                         <div className="card character__card">
                             <img
                                 src={item.img}
@@ -42,31 +44,31 @@ export default function List() {
                                     <ul className="list-unstyled">
                                         {item.regnalYears && (
                                             <li>
-                                                Años de reinado: $
+                                                Años de reinado:
                                                 {item.regnalYears}
                                             </li>
                                         )}
                                         {item.weapon && item.skill && (
                                             <>
-                                                <li>Arma: ${item.weapon} </li>
+                                                <li>Arma: {item.weapon} </li>
                                                 <li>Destreza: {item.skill}</li>
                                             </>
                                         )}
-                                        {item.advises.char_name && (
+                                        {item.advises && (
                                             <li>
-                                                Asesora a: $
+                                                Asesora a:
                                                 {item.advises.char_name}
                                             </li>
                                         )}
 
-                                        {item.serve.char_name && (
+                                        {item.serve && (
                                             <>
                                                 <li>
                                                     Sirve a: $
                                                     {item.serve.char_name}
                                                 </li>
                                                 <li>
-                                                    Peloteo: ${item.fidelity}
+                                                    Peloteo: {item.fidelity}
                                                 </li>
                                             </>
                                         )}
