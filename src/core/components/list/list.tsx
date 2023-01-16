@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
 import { Characters, getCharactersData } from '../../data/characters.data';
 
 export default function List() {
-    const initialCharacters = getCharactersData() as Characters;
-    const [characters, setCharacters] = useState(initialCharacters);
-    console.log(characters);
-    console.log(characters[3].advises.char_name);
+    // Comment to not use UseEffect
+    // const initialCharacters = getCharactersData() as Characters;
+    // const [characters, setCharacters] = useState(initialCharacters);
+    const characters = getCharactersData() as Characters;
 
     return (
         <>
@@ -44,7 +43,7 @@ export default function List() {
                                     <ul className="list-unstyled">
                                         {item.regnalYears && (
                                             <li>
-                                                Años de reinado:
+                                                Años de reinado:{' '}
                                                 {item.regnalYears}
                                             </li>
                                         )}
@@ -56,7 +55,7 @@ export default function List() {
                                         )}
                                         {item.advises && (
                                             <li>
-                                                Asesora a:
+                                                Asesora a:{' '}
                                                 {item.advises.char_name}
                                             </li>
                                         )}
@@ -64,7 +63,7 @@ export default function List() {
                                         {item.serve && (
                                             <>
                                                 <li>
-                                                    Sirve a: $
+                                                    Sirve a:{' '}
                                                     {item.serve.char_name}
                                                 </li>
                                                 <li>
