@@ -35,7 +35,7 @@ export default function Item({ item }: { item: CharacterOption }) {
                         {item.regnalYears && (
                             <li>Años de reinado: {item.regnalYears}</li>
                         )}
-                        {(item.weapon && item.skill) && (
+                        {item.weapon && item.skill && (
                             <>
                                 <li>Arma: {item.weapon} </li>
                                 <li>Destreza: {item.skill}</li>
