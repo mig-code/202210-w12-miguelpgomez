@@ -1,11 +1,11 @@
 import React from 'react';
 import { Layout } from '../layout/layout';
-
+import List from '../list/list';
 
 function App() {
     return (
         <Layout>
-            <h1 > Lista de personajes</h1>
+            <List></List>
         </Layout>
     );
 }
