@@ -3,7 +3,7 @@ import {
     CharacterOption,
     CharactersOptions,
     getCharactersData,
-} from '../../data/characters.data';
+} from '../data/characters.data';
 
 export type UseCharacters = {
     getCharacters: () => CharactersOptions;
@@ -15,7 +15,7 @@ export function useCharacters(): UseCharacters {
     const [characters, setCharacters] = useState(initialState);
 
     const getCharacters = () => characters;
-console.log("LOAD HOOK")
+    console.log('LOAD HOOK');
     const handleUpdate = (characterPayload: Partial<CharacterOption>) => {
         setCharacters((prev) => {
             const newCharacters = prev.map((item) => {
