@@ -1,13 +1,33 @@
-import { Advisor, } from '../models/advisor';
+import { Advisor } from '../models/advisor';
 
-import { Fighter,} from '../models/fighter';
+import { Fighter } from '../models/fighter';
 import { King } from '../models/king';
 import { Squire } from '../models/squire';
 
+// export type CharacterOption = King & Fighter & Squire & Advisor;
 
-export type Characters = Array<
-    King & Advisor & Squire & Fighter
->;
+export type CharactersOptions = Array<CharacterOption>;
+
+export type CharacterOption = {
+    char_name: string;
+    char_fam: string;
+    char_age: number;
+    img: string;
+    isAlive: boolean;
+    message: string;
+    tvShow: string;
+    emoji: string;
+    id: string;
+    comunicate: () => string;
+    death: () => void;
+    advises?: Fighter | King | Advisor | Squire;
+    weapon?: string;
+    skill?: number;
+    regnalYears?: number;
+    serve?: Fighter;
+    fidelity?: number;
+
+};
 
 const joffreyBaratheon = new King(
     'Joffrey',
@@ -41,7 +61,7 @@ const tyrionLannister = new Advisor(
 );
 const bronn = new Squire('Bronn', '', 42, 'img/bronn.jpg', jaimeLannister, 10);
 
-export const charactersData = [
+export const charactersData: CharactersOptions = [
     joffreyBaratheon,
     jaimeLannister,
     daenerysTargaryen,
