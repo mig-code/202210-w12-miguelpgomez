@@ -2,13 +2,10 @@ import React, { useContext } from 'react';
 import { CharacterContext } from '../../context/character.context';
 import { CharacterOption } from '../../data/characters.data';
 
-
 export default function Item({ item }: { item: CharacterOption }) {
-
-    const{handleUpdate} = useContext(CharacterContext);
+    const { handleUpdate } = useContext(CharacterContext);
     const handleDeath = () => {
-        console.log('Muere');
-        handleUpdate({id: item.id});
+        handleUpdate({ id: item.id });
     };
     const handleSpeak = () => {
         console.log('Habla');
@@ -65,13 +62,19 @@ export default function Item({ item }: { item: CharacterOption }) {
                     </ul>
                     <div className="character__actions">
                         {item.isAlive && (
-                            <button onClick={handleDeath} className="character__action character__action--death btn">
+                            <button
+                                onClick={handleDeath}
+                                className="character__action character__action--death btn"
+                            >
                                 Muere
                             </button>
                         )}
 
                         {item.isAlive && (
-                            <button onClick={handleSpeak} className="character__action character__action--speak btn">
+                            <button
+                                onClick={handleSpeak}
+                                className="character__action character__action--speak btn"
+                            >
                                 Habla
                             </button>
                         )}
