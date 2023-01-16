@@ -1,11 +1,10 @@
-import { getCharactersData } from '../../data/characters.data';
+import { useContext } from 'react';
+import { CharacterContext } from '../../context/character.context';
+
 import Item from '../item/item';
 
 export default function List() {
-    // Comment to not use UseEffect
-    // const initialCharacters = getCharactersData() as Characters;
-    // const [characters, setCharacters] = useState(initialCharacters);
-    const characters = getCharactersData();
+    const { characters } = useContext(CharacterContext);
 
     return (
         <>
