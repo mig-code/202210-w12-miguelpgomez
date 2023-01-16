@@ -9,7 +9,7 @@ import { characterReducer } from '../reducers/character.reducer';
 
 export type UseCharacters = {
     getCharacters: () => CharactersOptions;
-    handleUpdate: (characterPayload: CharacterOption["id"]) => void;
+    handleUpdate: (characterPayload: CharacterOption['id']) => void;
 };
 
 export function useCharacters(): UseCharacters {
@@ -20,21 +20,8 @@ export function useCharacters(): UseCharacters {
 
     const getCharacters = () => characters;
     console.log('LOAD HOOK');
-    const handleUpdate = (characterPayload: CharacterOption["id"]) => {
-        // setCharacters((prev) => {
-        //     const newCharacters = prev.map((item) => {
-        //         if (item.id === characterPayload.id) {
-        //             return {
-        //                 ...item,
-        //                 isAlive: false,
-        //             };
-        //         }
-        //         return item;
-        //     });
-        //     return newCharacters;
-        // });
-        dispatch(characterUpdateCreator(characterPayload)
-        );
+    const handleUpdate = (characterPayload: CharacterOption['id']) => {
+        dispatch(characterUpdateCreator(characterPayload));
     };
 
     return {
