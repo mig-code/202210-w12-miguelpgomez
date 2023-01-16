@@ -6,9 +6,7 @@ import { mockAdvisor } from '../mocks/models.mocks';
 
 describe(`Given useCharacter (custom hook)
             render with a virtual component`, () => {
-    const mockPayload: Partial<CharacterOption> = {
-        id: '1',
-    };
+    const mockPayload: CharacterOption['id'] = mockAdvisor.id;
 
     const TestComponent = () => {
         const { getCharacters, handleUpdate } = useCharacters();

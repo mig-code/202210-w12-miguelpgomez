@@ -5,7 +5,7 @@ import { CharacterOption } from '../../data/characters.data';
 export default function Item({ item }: { item: CharacterOption }) {
     const { handleUpdate } = useContext(CharacterContext);
     const handleDeath = () => {
-        handleUpdate({ id: item.id });
+        handleUpdate( item.id );
     };
     const handleSpeak = () => {
         console.log('Habla');
