@@ -4,13 +4,16 @@ import ReactDOM from 'react-dom/client';
 import App from './core/components/app/App';
 import reportWebVitals from './reportWebVitals';
 import './css/styles.css';
+import { CharacterContextProvider } from './core/context/character.provider';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <App />
+        <CharacterContextProvider>
+            <App />
+        </CharacterContextProvider>
     </React.StrictMode>
 );
 
