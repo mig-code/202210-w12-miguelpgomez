@@ -8,7 +8,7 @@ export function characterReducer(
 ): CharactersOptions {
     switch (action.type) {
         case characterActionTypes.update:
-            const updateCharacter = action.payload as CharacterOption['id'];
+            const updateCharacter = action.payload;
             const newCharacters = state.map((item) => {
                 if (item.id === updateCharacter) {
                     return {
