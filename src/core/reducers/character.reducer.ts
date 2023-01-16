@@ -1,4 +1,4 @@
-import { CharacterOption, CharactersOptions } from '../data/characters.data';
+import { CharactersOptions } from '../data/characters.data';
 import { CharacterAction } from './action.creators';
 import { characterActionTypes } from './action.types';
 
