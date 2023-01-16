@@ -1,14 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { useCharacters } from './use.characters';
-import { CharacterOption } from '../../data/characters.data';
-import { mockAdvisor } from '../../mocks/models.mocks';
+import { CharacterOption } from '../data/characters.data';
+import { mockAdvisor } from '../mocks/models.mocks';
 
 describe(`Given useCharacter (custom hook)
             render with a virtual component`, () => {
-    const mockPayload: Partial<CharacterOption> = {
-        id: '1',
-    };
+    const mockPayload: CharacterOption['id'] = mockAdvisor.id;
 
     const TestComponent = () => {
         const { getCharacters, handleUpdate } = useCharacters();

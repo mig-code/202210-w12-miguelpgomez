@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useCharacters } from '../components/hooks/use.characters';
+import { useCharacters } from '../hooks/use.characters';
 import { CharacterContext } from './character.context';
 
 export function CharacterContextProvider({
@@ -11,8 +11,7 @@ export function CharacterContextProvider({
     const context = useMemo(
         () => ({
             characters: getCharacters(),
-            handleUpdate
-
+            handleUpdate,
         }),
         [getCharacters, handleUpdate]
     );

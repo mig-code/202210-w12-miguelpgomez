@@ -3,7 +3,7 @@ import { CharacterOption, CharactersOptions } from '../data/characters.data';
 
 export type CharacterContextStructure = {
     characters: CharactersOptions;
-    handleUpdate: (characterPayload: Partial<CharactersOptions[0]>) => void;
+    handleUpdate: (characterPayload: CharacterOption["id"]) => void;
    
 
 };
@@ -11,7 +11,7 @@ export type CharacterContextStructure = {
 export const initialContext: CharacterContextStructure = {
     characters: [],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    handleUpdate: (characterPayload: Partial<CharacterOption>) => {},
+    handleUpdate: (characterPayload: CharacterOption['id']) => {},
 };
 
 export const CharacterContext = createContext(initialContext);
