@@ -5,7 +5,7 @@ import { CharacterAction, characterUpdateCreator } from './action.creators';
 import { characterReducer } from './character.reducer';
 
 describe('Given the reducer', () => {
-    let state: CharactersOptions;
+    let state: CharactersOptions | boolean | CharacterOption;
     let action: CharacterAction;
 
     describe('When the action type is "places@update"', () => {
@@ -13,7 +13,7 @@ describe('Given the reducer', () => {
             const updateCharacter: CharacterOption['id'] = mockAdvisor.id;
             state = [mockAdvisor];
             action = characterUpdateCreator(updateCharacter);
-            const result = characterReducer(state, action);
+            const result = characterReducer(state, action) as CharactersOptions;
             expect(result[0].isAlive).toBe(false);
         });
         test('If de ID doesnt exists it should return the same state', () => {

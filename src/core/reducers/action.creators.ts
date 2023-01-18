@@ -4,7 +4,7 @@ import { characterActionTypes } from './action.types';
 
 export type CharacterAction = {
     type: string;
-    payload: CharacterOption['id'] |CharacterOption |boolean;
+    payload: CharacterOption['id'] | CharacterOption | boolean;
 };
 
 export const characterUpdateCreator = (

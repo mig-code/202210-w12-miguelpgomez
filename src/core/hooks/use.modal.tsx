@@ -1,18 +1,11 @@
-import { useCallback, useEffect, useReducer, useState } from 'react';
+import React, { useCallback, useEffect, useReducer } from 'react';
+import { CharacterOption } from '../data/characters.data';
 import {
-    CharacterOption,
-    CharactersOptions,
-    getCharactersData,
-} from '../data/characters.data';
-import {
+    CharacterAction,
     characterSelectedCreator,
     characterShowModalCreator,
 } from '../reducers/action.creators';
-import {
-    characterReducer,
-    characterSelectedReducer,
-    characterShowModalReducer,
-} from '../reducers/character.reducer';
+import { characterReducer } from '../reducers/character.reducer';
 
 export type UseModal = {
     isModalOpen: boolean;
@@ -24,18 +17,13 @@ export function useModal(): UseModal {
     const intialModal = false;
     const initialcharacter = {} as CharacterOption;
     const [isModalOpen, dispatchModal] = useReducer(
-        characterShowModalReducer,
+        characterReducer,
         intialModal
-    );
+    ) as [boolean, React.Dispatch<CharacterAction>];
     const [modalCharacter, dispatchCharacter] = useReducer(
-        characterSelectedReducer,
+        characterReducer,
         initialcharacter
-    );
-
-    // const [isModalOpen, setIsModalOpen] = useState(intialModal);
-    // const [modalCharacter, setModalCharacter] = useState(initialcharacter);
-
-    console.log('LOAD HOOK MODAL');
+    ) as [CharacterOption, React.Dispatch<CharacterAction>];
 
     const handleModal = useCallback(
         (item: CharacterOption) => {
@@ -46,7 +34,7 @@ export function useModal(): UseModal {
     );
 
     useEffect(() => {
-        console.log(isModalOpen);
+        console.log(isModalOpen as boolean);
         setTimeout(() => {
             if (isModalOpen) {
                 dispatchModal(characterShowModalCreator(isModalOpen));
