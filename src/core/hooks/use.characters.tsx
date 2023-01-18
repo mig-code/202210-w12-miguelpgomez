@@ -4,7 +4,10 @@ import {
     CharactersOptions,
     getCharactersData,
 } from '../data/characters.data';
-import { characterUpdateCreator } from '../reducers/action.creators';
+import {
+    CharacterAction,
+    characterUpdateCreator,
+} from '../reducers/action.creators';
 import { characterReducer } from '../reducers/character.reducer';
 
 export type UseCharacters = {
@@ -13,13 +16,13 @@ export type UseCharacters = {
 };
 
 export function useCharacters(): UseCharacters {
-    const initialState: CharactersOptions = getCharactersData();
-    const [characters, dispatch] = useReducer(characterReducer, initialState);
-
-    // const [characters, setCharacters] = useState(initialState);
+    const initialCharacters: CharactersOptions = getCharactersData();
+    const [characters, dispatch] = useReducer(
+        characterReducer,
+        initialCharacters
+    ) as [CharactersOptions, React.Dispatch<CharacterAction>];
 
     const getCharacters = () => characters;
-    console.log('LOAD HOOK');
     const handleUpdate = (characterPayload: CharacterOption['id']) => {
         dispatch(characterUpdateCreator(characterPayload));
     };

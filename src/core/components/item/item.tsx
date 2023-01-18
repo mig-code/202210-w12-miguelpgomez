@@ -3,13 +3,15 @@ import { CharacterContext } from '../../context/character.context';
 import { CharacterOption } from '../../data/characters.data';
 
 export default function Item({ item }: { item: CharacterOption }) {
-    const { handleUpdate } = useContext(CharacterContext);
+    const { handleUpdate, handleModal } = useContext(CharacterContext);
+
     const handleDeath = () => {
-        handleUpdate( item.id );
+        handleUpdate(item.id);
     };
     const handleSpeak = () => {
-        console.log('Habla');
+        handleModal(item);
     };
+
     return (
         <div className="card character__card">
             <img
@@ -33,7 +35,10 @@ export default function Item({ item }: { item: CharacterOption }) {
                             {item.isAlive ? (
                                 <i className="fas fa-thumbs-up"></i>
                             ) : (
-                                <i className="fas fa-thumbs-down"></i>
+                                <i
+                                    data-testid={'thumbs-down'}
+                                    className="fas fa-thumbs-down"
+                                ></i>
                             )}
                         </li>
                     </ul>

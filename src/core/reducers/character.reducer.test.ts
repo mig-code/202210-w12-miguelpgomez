@@ -1,11 +1,16 @@
 import { CharacterOption, CharactersOptions } from '../data/characters.data';
 import { mockAdvisor } from '../mocks/models.mocks';
 
-import { CharacterAction, characterUpdateCreator } from './action.creators';
+import {
+    CharacterAction,
+    characterSelectedCreator,
+    characterShowModalCreator,
+    characterUpdateCreator,
+} from './action.creators';
 import { characterReducer } from './character.reducer';
 
 describe('Given the reducer', () => {
-    let state: CharactersOptions;
+    let state: CharactersOptions | boolean | CharacterOption;
     let action: CharacterAction;
 
     describe('When the action type is "places@update"', () => {
@@ -13,7 +18,7 @@ describe('Given the reducer', () => {
             const updateCharacter: CharacterOption['id'] = mockAdvisor.id;
             state = [mockAdvisor];
             action = characterUpdateCreator(updateCharacter);
-            const result = characterReducer(state, action);
+            const result = characterReducer(state, action) as CharactersOptions;
             expect(result[0].isAlive).toBe(false);
         });
         test('If de ID doesnt exists it should return the same state', () => {
@@ -22,7 +27,23 @@ describe('Given the reducer', () => {
             action = characterUpdateCreator(updateCharacter);
             const result = characterReducer(state, action);
             expect(result).toEqual([mockAdvisor]);
-            // expect(result[0].isAlive).toBe(false);
+        });
+    });
+    describe('When the action type is "character@showModal"', () => {
+        test('Then it should return the state whith character updated', () => {
+            const selectedChar = mockAdvisor;
+            state = [];
+            action = characterSelectedCreator(selectedChar);
+            const result = characterReducer(state, action) as CharacterOption;
+            expect(result).toEqual(selectedChar);
+        });
+    });
+    describe('When the action type is "characterSelectedCreator"', () => {
+        test('Then it should return !state', () => {
+            state = false;
+            action = characterShowModalCreator(!state);
+            const result = characterReducer(state, action) as boolean;
+            expect(result).toBe(true);
         });
     });
     describe('When the action type is not valid', () => {
