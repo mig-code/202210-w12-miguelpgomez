@@ -9,15 +9,16 @@ export function CharacterContextProvider({
     children: JSX.Element;
 }) {
     const { getCharacters, handleUpdate } = useCharacters();
-    const { isModalOpen, handleModal } = useModal();
+    const { isModalOpen, handleModal, modalCharacter } = useModal();
     const context = useMemo(
         () => ({
             characters: getCharacters(),
             handleUpdate,
             isModalOpen,
             handleModal,
+            modalCharacter,
         }),
-        [getCharacters, handleUpdate, isModalOpen, handleModal]
+        [getCharacters, handleUpdate, isModalOpen, handleModal, modalCharacter]
     );
 
     return (

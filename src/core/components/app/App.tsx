@@ -24,7 +24,7 @@ function App() {
         <Layout>
             <>
                 <List></List>
-                <ModalSpeak char={mockAdvisor}></ModalSpeak>
+                <ModalSpeak ></ModalSpeak>
             </>
         </Layout>
     );

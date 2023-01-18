@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { CharacterContext } from '../../context/character.context';
 import { CharacterOption } from '../../data/characters.data';
 
-export default function ModalSpeak({ char }: { char: CharacterOption }) {
-    const { isModalOpen } = useContext(CharacterContext);
+export default function ModalSpeak() {
+    const { isModalOpen, modalCharacter } = useContext(CharacterContext);
 
     return (
         <div
@@ -13,11 +13,13 @@ export default function ModalSpeak({ char }: { char: CharacterOption }) {
                     : 'comunications'
             }
         >
-            <p className="comunications__text display-1">{char.comunicate()}</p>
+            <p className="comunications__text display-1">
+                {modalCharacter.message}
+            </p>
             <img
                 className="comunications__picture"
-                src={char.img}
-                alt={char.char_name}
+                src={modalCharacter.img}
+                alt={modalCharacter.char_name}
             />
         </div>
     );

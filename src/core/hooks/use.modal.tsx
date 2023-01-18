@@ -9,24 +9,31 @@ import { characterReducer } from '../reducers/character.reducer';
 
 export type UseModal = {
     isModalOpen: boolean;
-    handleModal: () => void;
+    handleModal: (item: CharacterOption) => void;
+    modalCharacter: CharacterOption;
 };
 
 export function useModal(): UseModal {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const intialModal = false;
+    const initialcharacter = {} as CharacterOption;
+    const [isModalOpen, setIsModalOpen] = useState(intialModal);
+    const [modalCharacter, setModalCharacter] = useState(initialcharacter);
 
     console.log('LOAD HOOK MODAL');
 
-    const handleModal = useCallback(() => {
-        setIsModalOpen(!isModalOpen);
-    }, [isModalOpen]);
+    const handleModal = useCallback(
+        (item: CharacterOption) => {
+            setModalCharacter(item);
+            setIsModalOpen(!isModalOpen);
+        },
+        [isModalOpen]
+    );
 
     useEffect(() => {
-        console.log(isModalOpen)
+        console.log(isModalOpen);
         setTimeout(() => {
             if (isModalOpen) {
                 setIsModalOpen(!isModalOpen);
-                console.log('CLOSING MODAL');
             }
         }, 2000);
     }, [isModalOpen]);
@@ -34,5 +41,6 @@ export function useModal(): UseModal {
     return {
         isModalOpen,
         handleModal,
+        modalCharacter,
     };
 }
