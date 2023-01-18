@@ -1,7 +1,7 @@
 import { CharacterOption, CharactersOptions } from '../data/characters.data';
 import { mockAdvisor } from '../mocks/models.mocks';
 
-import { CharacterAction, characterUpdateCreator } from './action.creators';
+import { CharacterAction, characterSelectedCreator, characterShowModalCreator, characterUpdateCreator } from './action.creators';
 import { characterReducer } from './character.reducer';
 
 describe('Given the reducer', () => {
@@ -22,9 +22,28 @@ describe('Given the reducer', () => {
             action = characterUpdateCreator(updateCharacter);
             const result = characterReducer(state, action);
             expect(result).toEqual([mockAdvisor]);
-            // expect(result[0].isAlive).toBe(false);
+           
+            
         });
     });
+    describe('When the action type is "character@showModal"', () => {
+        test('Then it should return the state whith character updated', () => {
+            const selectedChar = mockAdvisor;
+            state=[]
+            action = characterSelectedCreator(selectedChar);
+            const result = characterReducer(state, action) as CharacterOption;
+            expect(result).toEqual(selectedChar);
+        });
+       
+    });
+     describe('When the action type is "characterSelectedCreator"', () => {
+         test('Then it should return !state', () => {
+             state = false;
+             action = characterShowModalCreator(!state);
+             const result = characterReducer(state, action) as boolean;
+             expect(result).toBe(true);
+         });
+     });
     describe('When the action type is not valid', () => {
         test('Then it should return the state', () => {
             state = [];
