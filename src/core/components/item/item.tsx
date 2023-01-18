@@ -9,7 +9,7 @@ export default function Item({ item }: { item: CharacterOption }) {
         handleUpdate(item.id);
     };
     const handleSpeak = () => {
-        console.log('Habla');
+        
         handleModal(item);
     };
    
@@ -36,7 +36,7 @@ export default function Item({ item }: { item: CharacterOption }) {
                             {item.isAlive ? (
                                 <i className="fas fa-thumbs-up"></i>
                             ) : (
-                                <i className="fas fa-thumbs-down"></i>
+                                <i data-testid ={"thumbs-down"} className="fas fa-thumbs-down"></i>
                             )}
                         </li>
                     </ul>
