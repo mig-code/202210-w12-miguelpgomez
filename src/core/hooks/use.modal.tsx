@@ -34,7 +34,6 @@ export function useModal(): UseModal {
     );
 
     useEffect(() => {
-        console.log(isModalOpen as boolean);
         setTimeout(() => {
             if (isModalOpen) {
                 dispatchModal(characterShowModalCreator(isModalOpen));

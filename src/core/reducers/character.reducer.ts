@@ -21,7 +21,7 @@ export function characterReducer(
             });
             return newCharacters;
         case characterActionTypes.showModal:
-            return !state as boolean;
+            return !state;
         case characterActionTypes.selected:
             return action.payload as CharacterOption;
 
