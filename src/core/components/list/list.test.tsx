@@ -8,7 +8,7 @@ import {
 } from '../../context/character.context';
 import { mockAdvisor, mockFighter } from '../../mocks/models.mocks';
 
-describe('Given Item component', () => {
+describe('Given List component', () => {
     const mockContext = {
         characters: [mockAdvisor, mockFighter],
     } as unknown as CharacterContextStructure;
