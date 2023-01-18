@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { CharacterContext } from '../../context/character.context';
 import { CharacterOption } from '../../data/characters.data';
 
-export default function ModalSpeak({
-    char,
-    openModal,
-}: {
-    char: CharacterOption;
-    openModal: boolean;
-}) {
+export default function ModalSpeak({ char }: { char: CharacterOption }) {
+    const { isModalOpen } = useContext(CharacterContext);
+
     return (
         <div
             className={
-                openModal ? 'comunications  comunications--on' : 'comunications'
+                isModalOpen
+                    ? 'comunications  comunications--on'
+                    : 'comunications'
             }
         >
             <p className="comunications__text display-1">{char.comunicate()}</p>

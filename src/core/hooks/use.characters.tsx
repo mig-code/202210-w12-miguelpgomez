@@ -17,7 +17,7 @@ export function useCharacters(): UseCharacters {
     const [characters, dispatch] = useReducer(characterReducer, initialState);
 
     const getCharacters = () => characters;
-    console.log('LOAD HOOK');
+    console.log('LOAD HOOK CHARACTERS');
     const handleUpdate = (characterPayload: CharacterOption['id']) => {
         dispatch(characterUpdateCreator(characterPayload));
     };

@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { CharacterContext } from '../../context/character.context';
 import { CharacterOption } from '../../data/characters.data';
 
 export default function Item({ item }: { item: CharacterOption }) {
-    const { handleUpdate } = useContext(CharacterContext);
+    const { handleUpdate, handleModal } = useContext(CharacterContext);
+
     const handleDeath = () => {
-        handleUpdate( item.id );
+        handleUpdate(item.id);
     };
     const handleSpeak = () => {
         console.log('Habla');
+        handleModal();
     };
+   
     return (
         <div className="card character__card">
             <img
