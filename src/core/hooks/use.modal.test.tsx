@@ -18,7 +18,11 @@ describe(`Given useModal (custom hook)
 
                 <div>
                     <ul>
-                        {isModalOpen? <li>{modalCharacter.char_name}</li>:<li>EMPTY</li>}
+                        {isModalOpen ? (
+                            <li>{modalCharacter.char_name}</li>
+                        ) : (
+                            <li>EMPTY</li>
+                        )}
                     </ul>
                 </div>
             </>
@@ -35,16 +39,11 @@ describe(`Given useModal (custom hook)
             expect(
                 await screen.findByText(mockAdvisor.char_name)
             ).toBeInTheDocument();
-             act(() => {
-                 jest.runOnlyPendingTimers();
-             });
+            act(() => {
+                jest.runOnlyPendingTimers();
+            });
 
-             expect(
-                await screen.findByText('EMPTY')
-            ).toBeInTheDocument();
-             
-            
-
+            expect(await screen.findByText('EMPTY')).toBeInTheDocument();
         });
     });
 });
