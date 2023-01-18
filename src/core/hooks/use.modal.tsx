@@ -4,8 +4,15 @@ import {
     CharactersOptions,
     getCharactersData,
 } from '../data/characters.data';
-import { characterUpdateCreator } from '../reducers/action.creators';
-import { characterReducer } from '../reducers/character.reducer';
+import {
+    characterSelectedCreator,
+    characterShowModalCreator,
+} from '../reducers/action.creators';
+import {
+    characterReducer,
+    characterSelectedReducer,
+    characterShowModalReducer,
+} from '../reducers/character.reducer';
 
 export type UseModal = {
     isModalOpen: boolean;
@@ -16,15 +23,24 @@ export type UseModal = {
 export function useModal(): UseModal {
     const intialModal = false;
     const initialcharacter = {} as CharacterOption;
-    const [isModalOpen, setIsModalOpen] = useState(intialModal);
-    const [modalCharacter, setModalCharacter] = useState(initialcharacter);
+    const [isModalOpen, dispatchModal] = useReducer(
+        characterShowModalReducer,
+        intialModal
+    );
+    const [modalCharacter, dispatchCharacter] = useReducer(
+        characterSelectedReducer,
+        initialcharacter
+    );
+
+    // const [isModalOpen, setIsModalOpen] = useState(intialModal);
+    // const [modalCharacter, setModalCharacter] = useState(initialcharacter);
 
     console.log('LOAD HOOK MODAL');
 
     const handleModal = useCallback(
         (item: CharacterOption) => {
-            setModalCharacter(item);
-            setIsModalOpen(!isModalOpen);
+            dispatchCharacter(characterSelectedCreator(item));
+            dispatchModal(characterShowModalCreator(isModalOpen));
         },
         [isModalOpen]
     );
@@ -33,7 +49,7 @@ export function useModal(): UseModal {
         console.log(isModalOpen);
         setTimeout(() => {
             if (isModalOpen) {
-                setIsModalOpen(!isModalOpen);
+                dispatchModal(characterShowModalCreator(isModalOpen));
             }
         }, 2000);
     }, [isModalOpen]);
