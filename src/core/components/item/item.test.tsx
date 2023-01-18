@@ -3,7 +3,12 @@ import {
     CharacterContext,
     CharacterContextStructure,
 } from '../../context/character.context';
-import { mockAdvisor, mockFighter, mockKing, mockSquire } from '../../mocks/models.mocks';
+import {
+    mockAdvisor,
+    mockFighter,
+    mockKing,
+    mockSquire,
+} from '../../mocks/models.mocks';
 import Item from './item';
 
 describe('Given Item component', () => {
@@ -53,12 +58,10 @@ describe('Given Item component', () => {
             const textElement = screen.getByText(/Peloteo/i);
             expect(textElement).toBeInTheDocument();
         });
-         test('Then a Fighter info should have been render', () => {
-             render(<Item item={mockFighter} />);
-             const textElement = screen.getByText(/Arma/i);
-             expect(textElement).toBeInTheDocument();
-         });
-
-    
+        test('Then a Fighter info should have been render', () => {
+            render(<Item item={mockFighter} />);
+            const textElement = screen.getByText(/Arma/i);
+            expect(textElement).toBeInTheDocument();
+        });
     });
 });
