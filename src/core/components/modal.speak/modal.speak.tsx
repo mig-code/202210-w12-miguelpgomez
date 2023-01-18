@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { CharacterContext } from '../../context/character.context';
-import { CharacterOption } from '../../data/characters.data';
 
 export default function ModalSpeak() {
     const { isModalOpen, modalCharacter } = useContext(CharacterContext);
