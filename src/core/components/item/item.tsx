@@ -9,10 +9,9 @@ export default function Item({ item }: { item: CharacterOption }) {
         handleUpdate(item.id);
     };
     const handleSpeak = () => {
-        
         handleModal(item);
     };
-   
+
     return (
         <div className="card character__card">
             <img
@@ -36,7 +35,10 @@ export default function Item({ item }: { item: CharacterOption }) {
                             {item.isAlive ? (
                                 <i className="fas fa-thumbs-up"></i>
                             ) : (
-                                <i data-testid ={"thumbs-down"} className="fas fa-thumbs-down"></i>
+                                <i
+                                    data-testid={'thumbs-down'}
+                                    className="fas fa-thumbs-down"
+                                ></i>
                             )}
                         </li>
                     </ul>
