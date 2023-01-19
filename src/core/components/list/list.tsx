@@ -8,14 +8,16 @@ export default function List() {
 
     return (
         <>
-            <h1>Lista de personajes</h1>
-            <ul className="characters-list row list-unstyled">
+            <u
+                data-testid={'characters-list'}
+                className="characters-list row list-unstyled"
+            >
                 {characters.map((item, index) => (
                     <li key={item.id} className="character col ">
                         <Item item={item}></Item>
                     </li>
                 ))}
-            </ul>
+            </u>
         </>
     );
 }

@@ -31,7 +31,7 @@ export default function Item({ item }: { item: CharacterOption }) {
                     <ul className="list-unstyled">
                         <li>Edad: {item.char_age} años</li>
                         <li>
-                            Estado:
+                            Estado:{' '}
                             {item.isAlive ? (
                                 <i className="fas fa-thumbs-up"></i>
                             ) : (

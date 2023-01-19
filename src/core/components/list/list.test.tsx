@@ -18,8 +18,8 @@ describe('Given List component', () => {
                 <List />
             </CharacterContext.Provider>
         );
-        const heading = screen.getByText(/Lista de personajes/i);
-        expect(heading).toBeInTheDocument();
+        const dataTestId = screen.getByTestId('characters-list');
+        expect(dataTestId).toBeInTheDocument();
         const mockAdvisorElement = screen.getByText(/Tyrion/i);
         expect(mockAdvisorElement).toBeInTheDocument();
     });
