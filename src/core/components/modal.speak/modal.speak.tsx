@@ -18,7 +18,11 @@ export default function ModalSpeak() {
             <img
                 className="comunications__picture"
                 src={modalCharacter.img}
-                alt={modalCharacter.char_name}
+                alt={
+                    modalCharacter.char_name
+                        ? modalCharacter.char_name
+                        : 'character empty'
+                }
             />
         </div>
     );
