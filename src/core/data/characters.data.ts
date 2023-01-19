@@ -4,8 +4,6 @@ import { Fighter } from '../models/fighter';
 import { King } from '../models/king';
 import { Squire } from '../models/squire';
 
-// export type CharacterOption = King & Fighter & Squire & Advisor;
-
 export type CharactersOptions = Array<CharacterOption>;
 
 export type CharacterOption = {
@@ -26,7 +24,6 @@ export type CharacterOption = {
     regnalYears?: number;
     serve?: Fighter;
     fidelity?: number;
-
 };
 
 const joffreyBaratheon = new King(
