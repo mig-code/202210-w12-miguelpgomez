@@ -6,8 +6,10 @@ import Item from '../item/item';
 export default function List() {
     const { characters } = useContext(CharacterContext);
 
+    
     return (
         <>
+        <h2>REDUX GOT</h2>
             <u
                 data-testid={'characters-list'}
                 className="characters-list row list-unstyled"
